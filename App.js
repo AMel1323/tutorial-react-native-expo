@@ -27,16 +27,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tituloPrincipal:{
-    fontSize: '20px',
+    fontSize: '20',
     fontWeight: 'bold',
   },
   subTitulo: {
-    fontSize: '18px',
+    fontSize: '18',
     fontWeight: 'bold',
     marginVertical: 20,
   },
   saibaMais:{
-    fontSize: '14px',
+    fontSize: '14',
     color: "#464646"
   },
   box1:{

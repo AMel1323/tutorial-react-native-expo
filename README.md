@@ -4,7 +4,7 @@
 # Comandos Expo
 
 -npm start (roda o projeto no expo)
--npm expo start --tunnel
+-npx expo start --tunnel
 
 
 
