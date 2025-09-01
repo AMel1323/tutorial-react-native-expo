@@ -14,3 +14,12 @@
 
 git config --global user.name "Melissa Alves"
 git config --global user.email "alves.melissa1@aluno.ifsp.edu.br"
+
+# Perguntas que pode cair na Prova
+-quais os tipos de navegação posso usar com o expo Router?
+ (Stack ="pilhas de páginas",
+ Tabs ="barra fixa com ícones de navegação'ao pé do App'",
+ Drawer =" barra lateral"
+ Modal ="janela que abre na frente"
+  )
+  

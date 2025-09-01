@@ -1,4 +1,4 @@
-let nome = "Renan"
+//let nome = "Renan"
 var sobrenome = "Cavichi"
 const end = "Rua Tal"
 
@@ -67,6 +67,14 @@ const obj = {
     sobrenome: "Cavichi",
     idade: 41,
 }
+
+// const nome = obj.nome
+// const sobrenome = obj.sobrenome
+// const idade = obj.idade
+
+const {nome, sobrenome, idade} = obj
+
+console.log(nome)
 
 
 const JSONpessoa = JSON.stringify(obj)
