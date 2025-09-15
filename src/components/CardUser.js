@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Pressable} from 'react-native'
 import { Image } from 'expo-image'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-function CardUser({id, name, email, avatar }) {
+function CardUser({id, name, email, avatar,users, setUser }) {
 
   const handleDelete = async () => {
     const response = await fetch(`http://localhost:3333/profile/${id}`,{
@@ -10,13 +10,16 @@ function CardUser({id, name, email, avatar }) {
     });
       if(response.ok){
         alert("Usuário deletado com sucesso")
+      const updatedUsers = users.filter(user => user.id !== id);//cria um novo array sem o id que foi deletado
+      setUser(updatedUsers);
       }else {
         alert("Erro ao deletar usuário")
       }
     
   }
 
-  return (
+  return (   
+
     <View style={styles.card}>
       <Image
         style={styles.image}
@@ -27,6 +30,9 @@ function CardUser({id, name, email, avatar }) {
         <Text>{email}</Text>
       </View>
       <View>
+        <Pressable onPress={handleEdit}>
+        <FontAwesome name="trash" size={24} color="black" />
+        </Pressable>
         <Pressable onPress={handleDelete}>
         <FontAwesome name="trash" size={24} color="black" />
         </Pressable>
