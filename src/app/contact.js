@@ -1,21 +1,46 @@
-import { View, Text, Button, StyleSheet } from 'react-native'
+import { View, Text,  StyleSheet } from 'react-native'
 import { useRouter } from 'expo-router'
+import { useEffect, useState } from 'react';
+import CardUser from '../components/CardUser';
 
 export default function Contact() {
 
     const router = useRouter()
+
+    const [users, setUser] = useState([])
+
+    useEffect(() => {
+        const listUser = async () => {
+            const response = await fetch("http://localhost:3333/profile")
+
+            if (response.ok) {
+                console.log("Lista carregada com sucesso")
+                const data = await response.json()
+                console.log(data.profile)
+                setUser(data.profile)
+            } else {
+                console.log("Erro ao carregar a lista")
+
+            }
+        }
+        listUser()
+    }, [])
+
     return (
         <View style={styles.container}>
             <Text>Página de Contato</Text>
-            <Button
-                title='Home'
-                onPress={() => router.replace('/')}
-            ></Button>
+            {users.map((user) => (
+                <CardUser
+                    key={user.id}
+                    id={user.id}
+                    name={user.name}
+                    email={user.email}
+                    avatar={user.avatar}
 
-            <Button
-                title='About'
-                onPress={() => router.push('/about')}>
-            </Button>
+                />
+            ))}
+
+
         </View>
     )
 }
@@ -25,5 +50,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+
+
     }
 })
+

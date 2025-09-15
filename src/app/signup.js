@@ -11,6 +11,7 @@ export default function Signup() {
     const [pass, setPass] = useState("");
     const [avatar, setAvatar] = useState("");
     
+    
     const handleSignup = async () => {
 
         const profile={
@@ -25,7 +26,7 @@ export default function Signup() {
             body: JSON.stringify(profile),
             headers: {"Content-Type": "application/json"}
         })
-
+  
         if(response.ok){
             console.log("Cadastrado com sucesso")
             router.navigate('/login')
