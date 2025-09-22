@@ -1,24 +1,38 @@
-import { View, Text, StyleSheet, Pressable} from 'react-native'
+import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { Image } from 'expo-image'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import Feather from '@expo/vector-icons/Feather';
+import { useRouter } from 'expo-router';
+import { useUserStore } from '../stores/useUserStore'
 
-function CardUser({id, name, email, avatar,users, setUser }) {
+function CardUser({ id, name, email, avatar }) {
+
+
+  const router = useRouter()
+  const { users, setUsers } = useUserStore()
 
   const handleDelete = async () => {
-    const response = await fetch(`http://localhost:3333/profile/${id}`,{
+    const response = await fetch(`http://localhost:3333/profile/${id}`, {
       method: 'DELETE'
     });
-      if(response.ok){
-        alert("Usuário deletado com sucesso")
+    if (response.ok) {
+      alert("Usuário deletado com sucesso")
       const updatedUsers = users.filter(user => user.id !== id);//cria um novo array sem o id que foi deletado
-      setUser(updatedUsers);
-      }else {
-        alert("Erro ao deletar usuário")
-      }
-    
+      setUsers(updatedUsers);
+    } else {
+      alert("Erro ao deletar usuário")
+    }
+
+  }
+  const handleEdit = () => {
+    console.log("Editar usuário")
+    router.push({
+      pathname: '/edituser',
+      params: { id, name, email, avatar }
+    })
   }
 
-  return (   
+  return (
 
     <View style={styles.card}>
       <Image
@@ -31,10 +45,10 @@ function CardUser({id, name, email, avatar,users, setUser }) {
       </View>
       <View>
         <Pressable onPress={handleEdit}>
-        <FontAwesome name="trash" size={24} color="black" />
+          <Feather name="edit" size={22} color="black" />
         </Pressable>
         <Pressable onPress={handleDelete}>
-        <FontAwesome name="trash" size={24} color="black" />
+          <FontAwesome name="trash" size={24} color="black" />
         </Pressable>
       </View>
     </View>

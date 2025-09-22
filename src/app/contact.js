@@ -1,29 +1,30 @@
-import { View, Text,  StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { useRouter } from 'expo-router'
-import { useEffect, useState } from 'react';
+import { useState, useEffect, } from 'react';
 import CardUser from '../components/CardUser';
+import { useUserStore } from '../stores/useUserStore';
 
 export default function Contact() {
 
     const router = useRouter()
 
-    const [users, setUser] = useState([])
+    const { users, setUsers } = useUserStore()
 
     useEffect(() => {
-        const listUser = async () => {
+        const listUsers = async () => {
             const response = await fetch("http://localhost:3333/profile")
 
             if (response.ok) {
                 console.log("Lista carregada com sucesso")
                 const data = await response.json()
                 console.log(data.profile)
-                setUser(data.profile)
+                setUsers(data.profile)
             } else {
                 console.log("Erro ao carregar a lista")
 
             }
         }
-        listUser()
+        listUsers()
     }, [])
 
     return (
@@ -36,8 +37,7 @@ export default function Contact() {
                     name={user.name}
                     email={user.email}
                     avatar={user.avatar}
-                    users={users}
-                    setUser={setUser}
+
 
                 />
             ))}
