@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Header from '../components/Header'
 import Card1 from '../components/Card1'
 import Footer from '../components/Footer'
@@ -6,15 +6,15 @@ import { Link } from 'expo-router'
 
 export default function Home() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
 
       <Header />
 
-      <view style={styles.buttons}>
+      <View style={styles.buttons}>
         <Link href="contact" style={styles.contact}> <Text >Contato</Text></Link>
 
         <Link href="about" style={styles.about}> <Text >Sobre</Text></Link>
-      </view>
+      </View>
 
       <View style={styles.content}>
         <Card1 titulo="House of Dragons"
@@ -39,7 +39,7 @@ export default function Home() {
 
       <Footer />
 
-    </View>
+    </ScrollView>
   )
 }
 
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: " #3daff1",
-    justifyContent: "center",
-    alignItems: "center"
+    //justifyContent: "center",
+    //alignItems: "center"
 
   },
 

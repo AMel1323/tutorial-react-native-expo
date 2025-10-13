@@ -99,3 +99,12 @@ não, no css-in-js você cria um objeto javascript com as propriedades de estilo
 
 o que são propriedades dos componentes?
 propriedades (props) são parâmetros passados para componentes React, permitindo a personalização e configuração do comportamento e aparência dos componentes.
+
+
+### Próximos tópicos
+
+- Scrollview x Flatlist 
+- AsyncStrorage
+
+# perguntas para a prova
+- qual a diferença de Scrollview x Flatlist ?
