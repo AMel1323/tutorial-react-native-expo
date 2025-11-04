@@ -108,3 +108,7 @@ propriedades (props) são parâmetros passados para componentes React, permitind
 
 # perguntas para a prova
 - qual a diferença de Scrollview x Flatlist ?
+  resposta: ScrollView carrega todos os itens de uma vez, adequado para listas pequenas, enquanto FlatList carrega itens sob demanda, ideal para listas grandes e otimizadas (tipo Instagram).
+  
+- qual bibilioteca que usa Scrollview x Flatlist ?
+  resposta: A biblioteca React Native fornece ambos os componentes, ScrollView e FlatList, para gerenciar a rolagem de listas de forma eficiente.

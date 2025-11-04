@@ -1,13 +1,19 @@
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Profile() {
 
     const router = useRouter();
 
+    const handleLogout = async () => {
+        await AsyncStorage.removeItem('logado');
+        router.replace('/login');
+    }
+
     return (
         <View style={styles.container}>
-            <Text>Página de Contato</Text>
+            <Text>Página de Perfil</Text>
             <Button
                 title='Home'
                 onPress={() => router.replace('/')}
@@ -19,8 +25,8 @@ export default function Profile() {
             />
 
             <Button
-                title='Contato'
-                onPress={() => router.push('/contact')}
+                title='Logout'
+                onPress={handleLogout}
             />
 
         </View>
