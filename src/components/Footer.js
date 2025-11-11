@@ -1,23 +1,24 @@
-import { View, Text, StyleSheet } from 'react-native'
+import {View, Text, StyleSheet} from 'react-native'
 
 function Footer() {
   return (
-    <View style={styles.rodape}>
-      <Text>Melissa Alves</Text>
+    <View style={styles.footer}>
+        <Text style={styles.ftext}>Melisa Alves</Text>
     </View>
   )
 }
 
-
 const styles = StyleSheet.create({
-
-  rodape: {
+  footer: {
     flex: 2,
     width: "100%",
-    backgroundColor: "rgb(233, 154, 51)",
-    justifyContent: "center",
-    alignItems: "center"
+    backgroundColor: "#000000ff",
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  ftext:{
+    color: "#FFF"
   }
-})
+}) 
 
 export default Footer

@@ -1,57 +1,50 @@
-import { View, Text, StyleSheet } from 'react-native'
 import { Image } from 'expo-image'
+import { View, Text, StyleSheet } from 'react-native'
+import Entypo from '@expo/vector-icons/Entypo'
 
-function Header() {
+export default function Header() {
   return (
     <View style={styles.header}>
-
-      <Image
-        style={styles.image}
-        source={require('../../assets/img/001-video.png')}
-      />
-
-      <View style={styles.menu}>
-
+      <View style={styles.logotipo}>
         <Image
           style={styles.image}
-          source={require('../../assets/img/002-menu.png')}
+          source={require('../../assets/img/logo.svg')}
         />
-      </View>
-
+        <Text style={styles.tipo}>Movie<Text style={{color: '#ff7b00'}}>Fy</Text></Text>
+      </View> 
+      <Entypo name="menu" size={30} color="#FFF" />
     </View>
-
-
   )
 }
 
-
-
 const styles = StyleSheet.create({
-
-
   header: {
     flex: 1,
     width: "100%",
-    backgroundColor: "rgb(233, 154, 51)",
+    backgroundColor: "#329bf1ff",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    backgroundColor: "#050505ff"
   },
-
-  image: {
-    width: 40,
-    height: 40,
-
-  },
-
-
   menu: {
     width: 40,
     height: 40,
-
+    backgroundColor: "#ffffffff"
   },
-
-})
-
-export default Header
+  image: { 
+    width: 35, 
+    height: 35
+  },
+  logotipo:{
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10
+  },
+  tipo: {
+    fontSize: 18,
+    color: "#fff",
+    fontWeight: "bold"
+  }
+}) 

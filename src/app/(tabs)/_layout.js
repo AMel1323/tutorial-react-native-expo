@@ -1,4 +1,3 @@
-
 import { Tabs } from "expo-router"
 import Foundation from '@expo/vector-icons/Foundation'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'

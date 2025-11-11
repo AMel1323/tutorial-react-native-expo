@@ -1,8 +1,8 @@
 import { View, Text, Button, StyleSheet, ActivityIndicator } from 'react-native'
 import { useRouter } from 'expo-router'
-import { use, useEffect } from 'react'
+import { useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {useAuthStore} from '../stores/useAuthStore'
+import { useAuthStore } from '../stores/useAuthStore'
 
 export default function Initializer() {
 
@@ -13,7 +13,6 @@ export default function Initializer() {
         const checkLogin = async () => {
             const userLoggedString = await AsyncStorage.getItem('userLogged')
             const userLogged = userLoggedString ? JSON.parse(userLoggedString) : null
-
             if(userLogged?.token){
                 login(userLogged)
                 router.replace('/home')
@@ -21,14 +20,14 @@ export default function Initializer() {
                 router.replace('/login')
             }
         }
-        setTimeout(checkLogin, 2000) // Simula uma tela de carregamento por 2 segundos
+
+        setTimeout(checkLogin, 2000)
     }, [])
 
     return (
         <View style={styles.container}>
             <Text>Meu Site</Text>
-            <ActivityIndicator size="large" color="#1d1d55ff" />
-           
+            <ActivityIndicator size="large" color="#111111ff" />
         </View>
     )
 }
