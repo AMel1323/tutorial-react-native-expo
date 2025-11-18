@@ -1,53 +1,49 @@
-import { View, Text, Button, StyleSheet, TextInput } from 'react-native'
+import { View, Text, Button, StyleSheet, TextInput, Alert } from 'react-native'
 import { useRouter } from 'expo-router'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useState } from 'react'
+import { useAuthStore } from '../stores/useAuthStore'
 
-export default function Signup() {
+export default function Login() {
 
     const router = useRouter()
+    const [email, setEmail] = useState('')
+    const [pass, setPass] = useState('')
 
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [pass, setPass] = useState("")
-    const [avatar, setAvatar] = useState("")
+    const { login } = useAuthStore()
 
-    const handleSignup = async () => {
-
-        const profile = {
-            name,
+    const handleLogin = async () => {
+        const data = {
             email,
-            pass,
-            avatar
+            pass
         }
 
-        const response = await fetch("http://localhost:3333/profile", {
+        const response = await fetch("http://localhost:3333/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(profile),
+            body: JSON.stringify(data),
         })
 
         if(response.ok){
-            console.log("Cadastrado com sucesso")
-            router.navigate('/login')
+            const userLogged = await response.json()
+            login(userLogged)
+            await AsyncStorage.setItem('userLogged', JSON.stringify(userLogged))
+            router.replace('/home')
         } else {
-            console.log("Erro ao cadastrar")
+            const { message } = await response.json()
+            console.log("Erro ao logar!", message)
+            Alert.alert("Erro ao Entrar", message || "Não foi possível fazer o login.")
         }
     }
 
     return (
         <View style={styles.container}>
 
-        <Text style={styles.title}>Cadastre-se</Text>
+        <Text style={styles.title}>Entrar</Text>
 
         <View style={{ width: '80%' }}>
-            <Text style={styles.label}>Nome:</Text>
-            <TextInput 
-                style={styles.input}
-                value={name}
-                onChangeText={setName}
-            />
             <Text style={styles.label}>Email:</Text>
             <TextInput 
                 style={styles.input}
@@ -61,17 +57,17 @@ export default function Signup() {
                 onChangeText={setPass}
                 secureTextEntry
             />
-            <Text style={styles.label}>Avatar:</Text>
-            <TextInput 
-                style={styles.input}
-                value={avatar}
-                onChangeText={setAvatar}
-            />
         </View>
             <View style={{ marginTop: 20 }}>
                 <Button 
-                    title='Cadastrar'
-                    onPress={handleSignup}
+                    title='Entrar'
+                    onPress={handleLogin}
+                />
+            </View>
+             <View style={{ marginTop: 20 }}>
+                <Button 
+                    title='Cadastre-se'
+                    onPress={() => router.push('/signup')}
                 />
             </View>
         </View>

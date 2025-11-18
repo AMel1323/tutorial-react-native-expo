@@ -3,14 +3,14 @@ import {View, Text, StyleSheet} from 'react-native'
 function Footer() {
   return (
     <View style={styles.footer}>
-        <Text style={styles.ftext}>Melisa Alves</Text>
+        <Text style={styles.ftext}>@ Melissa Alves</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   footer: {
-    flex: 2,
+    flex: 1,
     width: "100%",
     backgroundColor: "#000000ff",
     justifyContent: 'center',
