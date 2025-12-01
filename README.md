@@ -112,3 +112,71 @@ propriedades (props) são parâmetros passados para componentes React, permitind
   
 - qual bibilioteca que usa Scrollview x Flatlist ?
   resposta: A biblioteca React Native fornece ambos os componentes, ScrollView e FlatList, para gerenciar a rolagem de listas de forma eficiente.
+
+  # Avaliação 2: 08/12
+
+  --------------------------------------ZUSTAND-----------------------------------------------
+    - ESTADOS GLOBAIS COM ZUSTAND
+
+        Zustand é uma biblioteca leve e flexível para gerenciamento de estado em aplicações React. Ela permite criar estados globais de forma simples e eficiente, utilizando uma API intuitiva e sem a necessidade de context API ou providers.
+
+    - O QUE EU POSSO GUARDAR NO ZUSTAND?
+
+        Você pode guardar qualquer tipo de dado no Zustand, incluindo objetos, arrays, strings, números, booleanos e funções. Ele é flexível o suficiente para armazenar estados complexos e gerenciar a lógica de negócios da sua aplicação.
+
+    - O QUE EU POSSO CRIAR NO STORE?
+
+        No Store do Zustand, você pode criar estados globais, ações para modificar esses estados, seletores para acessar partes específicas do estado e até mesmo middlewares para adicionar funcionalidades extras, como persistência de dados ou logging.
+
+    - O QUE ACONTECE QUANDO ALGUM ESTADO DO  ZUSTAND É ALTERADO?
+
+        Quando um estado do Zustand é alterado, todos os componentes que estão utilizando esse estado são automaticamente re-renderizados para refletir a mudança. Isso garante que a interface do usuário esteja sempre sincronizada com o estado atual da aplicação.
+
+ --------------------------------------SCROLLVIEW X FLATLIST----------------------------------
+    - SCROLLVIEW X FLATLIST
+
+       ScrollView é um componente que permite rolar o conteúdo vertical ou horizontalmente, enquanto FlatList é otimizado para listas grandes, carregando itens sob demanda.
+
+    -  PARA QUE SERVE?
+
+        ScrollView é usado para listas pequenas ou conteúdo fixo, enquanto FlatList é ideal para listas grandes e dinâmicas, como feeds de redes sociais.
+
+    - QUAL A DIFERENÇA ENTRE ELES?
+
+        Uso de ScrollView para listas pequenas e conteúdo fixo, e FlatList para listas grandes e dinâmicas, onde o desempenho é crucial.
+
+--------------------------------------ASYNCSTORAGE--------------------------------------------
+    - ASYNCSTORAGE
+      AsyncStorage é um sistema de armazenamento de dados chave-valor para React Native, permitindo que os desenvolvedores salvem dados localmente no dispositivo do usuário.
+      as informações ficam guardadas no navegador na web, ou no app que fica guardado no aparelho.
+      persistir (ou salvar) dados localmente no dispositivo do usuário, mesmo após o aplicativo ser fechado ou reiniciado.
+
+    - PARA QUE SERVE O ASYNC STORAGE?
+
+      Ele é usado para armazenar informações persistentes, como preferências do usuário, tokens de autenticação e dados de sessão, que precisam ser mantidos mesmo após o aplicativo ser fechado.
+    
+    - OS DADOS DAS ASYNC STORAGE SÃO DE QUE TIPO?
+      
+      Os dados armazenados no AsyncStorage são do tipo string. Se você precisar armazenar objetos ou arrays, é necessário convertê-los para strings usando JSON.stringify() antes de salvá-los, e depois convertê-los de volta para o formato original usando JSON.parse() ao recuperá-los. tipo chave-valor, onde tanto a chave quanto o valor são strings.
+      base de dados do tipo chave-valor.
+
+    - POSSO SALVAR QUALQUER TIPO DE DADOS NO ASYNC STORAGE?
+
+      Não, o AsyncStorage só pode armazenar dados do tipo string. Se você precisar salvar outros tipos de dados, como objetos ou arrays, deve convertê-los para strings usando JSON.stringify() antes de salvá-los, e depois convertê-los de volta para o formato original usando JSON.parse() ao recuperá-los.
+    
+--------------------------------------AXIOS---------------------------------------------------
+   - AXIOS PARA REQUISIÇÕES AUTENTICADAS NA API
+      Axios é uma biblioteca de cliente HTTP baseada em Promises para o navegador e para Node.js. Ela é comumente usada para fazer requisições a APIs RESTful e pode ser configurada para incluir tokens de autenticação em cabeçalhos de requisição.
+
+   - PARA QUE SERVE O AXIOS?
+      Ele é usado para simplificar o processo de fazer requisições HTTP, lidar com respostas e gerenciar erros de forma mais eficiente. O Axios também suporta a configuração de interceptores, que permitem modificar requisições e respostas antes que sejam tratadas pelo then ou catch.
+       envviar requisições HTTP para APIs que exigem autenticação, como incluir tokens JWT (JSON Web Tokens) nos cabeçalhos de requisição para acessar recursos protegidos.
+
+      FETCH: nativo do JavaScript para fazer requisições HTTP, mas não possui suporte nativo para interceptores ou configuração global de cabeçalhos.
+      AXIOS: biblioteca de terceiros que simplifica o uso de requisições HTTP, oferecendo recursos adicionais como interceptores e configuração global de cabeçalhos.
+
+  - QUAIS AS VANTAGENS EM RELAÇÃO AO FETCH?
+
+      Axios oferece uma API mais simples e intuitiva, suporte a interceptores para modificar requisições e respostas, configuração global de cabeçalhos, tratamento automático de JSON e suporte a cancelamento de requisições, tornando-o mais poderoso e flexível em comparação ao Fetch.
+       reutilização de código, melhor tratamento de erros e suporte a recursos avançados como interceptores e cancelamento de requisições.
+       facilita manutenção e além disso permite criar interceptores para adicionar tokens de autenticação automaticamente em todas as requisições.
